@@ -18,8 +18,15 @@ const PokemonsPage: FC = () => {
   );
 
   return (
-    <div>
-      <button onClick={() => fetchNextPage()}>+ 10</button>
+    <div className='container'>
+      <div className='grid grid-cols-3 gap-3'>
+        {pokemons.map((pokemon: any) => (
+          <div key={pokemon.name} className='flex justify-center rounded p-4 shadow'>
+            <h2 className='w-full text-center text-sm font-semibold capitalize'>{pokemon.name}</h2>
+          </div>
+        ))}
+        <button onClick={() => fetchNextPage()}>+ 10</button>
+      </div>
     </div>
   );
 };
