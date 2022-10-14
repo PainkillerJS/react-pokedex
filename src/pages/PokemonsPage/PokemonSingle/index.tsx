@@ -1,27 +1,14 @@
-import { useRequestPokemonQuery } from '@utils/api/hooks';
-
 import type { FC } from 'react';
 
 interface PokemonSingleProps {
-  id: number;
+  pokemon: any;
 }
 
-const PokemonSingle: FC<PokemonSingleProps> = ({ id }) => {
-  const { isFetching, data, isError } = useRequestPokemonQuery({ id });
-
-  if (isError || !data) return <div>Error</div>;
-  if (isFetching) {
-    return <div>Loading ...</div>;
-  }
-
-  const pokemon = data.data;
-
+const PokemonSingle: FC<PokemonSingleProps> = ({ pokemon }) => {
   return (
-    <div>
-      <img alt='' src='' />
-      <div key={pokemon.name} className='flex justify-center rounded p-4 shadow'>
-        <h2 className='w-full text-center text-sm font-semibold capitalize'>{pokemon.name}</h2>
-      </div>
+    <div className='flex justify-center rounded p-4 shadow'>
+      <img alt='pokemon image' src={pokemon.sprites.front_default} />
+      <h2 className='w-full text-center text-sm font-semibold capitalize'>{pokemon.name}</h2>
     </div>
   );
 };
