@@ -1,31 +1,18 @@
 import { useState } from 'react';
 
-import { useRequestPokemonInfiniteQuery } from '@utils/api/hooks';
+import PokemonSingle from './PokemonSingle';
 
 import type { FC } from 'react';
 
 const PokemonsPage: FC = () => {
-  const { isFetching, data, fetchNextPage, isError } = useRequestPokemonInfiniteQuery();
-
-  if (isError || !data) return <div>Error</div>;
-  if (isFetching) {
-    return <div>Loading ...</div>;
-  }
-
-  const pokemons = data.pages.reduce(
-    (pokemons, page) => [...pokemons, ...(page.data.results as [])],
-    []
-  );
+  const [pokemons, setPokemons] = useState(Array.from({ length: 20 }));
 
   return (
     <div className='container'>
       <div className='grid grid-cols-3 gap-3'>
-        {pokemons.map((pokemon: any) => (
-          <div key={pokemon.name} className='flex justify-center rounded p-4 shadow'>
-            <h2 className='w-full text-center text-sm font-semibold capitalize'>{pokemon.name}</h2>
-          </div>
+        {pokemons.map((_, index) => (
+          <PokemonSingle key={index} id={index + 1} />
         ))}
-        <button onClick={() => fetchNextPage()}>+ 10</button>
       </div>
     </div>
   );
