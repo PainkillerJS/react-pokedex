@@ -16,6 +16,7 @@ export default defineConfig({
       '@utils/firebase': path.resolve(__dirname, './src/utils/firebase'),
       '@utils/constants': path.resolve(__dirname, './src/utils/constants'),
       '@utils/helpers': path.resolve(__dirname, './src/utils/helpers'),
+      '@utils/helpers/*': path.resolve(__dirname, './src/utils/helpers/*'),
       '@utils/contexts': path.resolve(__dirname, './src/utils/contexts'),
       '@utils/hooks': path.resolve(__dirname, './src/utils/hooks'),
       '@features': path.resolve(__dirname, './src/features'),
