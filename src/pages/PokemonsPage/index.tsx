@@ -1,11 +1,10 @@
-import { useState, useRef } from 'react';
+import type { FC } from 'react';
+import { useRef,useState } from 'react';
 
 import { useRequestPokemonQueries } from '@utils/api/hooks';
 import { useIntersectionObserver } from '@utils/helpers/hooks';
 
 import PokemonSingle from './PokemonSingle';
-
-import type { FC } from 'react';
 
 const PokemonsPage: FC = () => {
   const lastElemRef = useRef<HTMLDivElement>(null);
@@ -22,7 +21,7 @@ const PokemonsPage: FC = () => {
     callBack: observerLoadData
   });
 
-  if (isFetching) return <></>;
+  if (isFetching) return <>Error</>;
 
   const pokemons = results.map((result: any) => result.data.data);
 

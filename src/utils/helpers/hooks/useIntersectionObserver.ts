@@ -1,8 +1,7 @@
-import { useRef, useEffect } from 'react';
-
 import type { RefObject } from 'react';
+import { useEffect, useRef } from 'react';
 
-interface useIntersectionObserverParams {
+interface UseIntersectionObserverParams {
   isLoadingRequest: boolean;
   callBack: (...params: unknown[]) => unknown;
   lastElementRef: RefObject<HTMLDivElement>;
@@ -12,7 +11,7 @@ const useIntersectionObserver = ({
   isLoadingRequest,
   callBack,
   lastElementRef
-}: useIntersectionObserverParams) => {
+}: UseIntersectionObserverParams) => {
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
