@@ -1,13 +1,15 @@
-import { BrowserRouter, Route,Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import PokemonsPage from '@pages/PokemonsPage';
+import { PokedexPage,PokemonsPage } from '@pages';
+import { ROUTES } from '@utils/constants';
 
 const App = () => (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<PokemonsPage />} />
-      </Routes>
-    </BrowserRouter>
-  );
+  <BrowserRouter>
+    <Routes>
+      <Route path={ROUTES.POKEMONS} element={<PokemonsPage />} />
+      <Route path={ROUTES.POKEDEX} element={<PokedexPage />} />
+    </Routes>
+  </BrowserRouter>
+);
 
 export default App;

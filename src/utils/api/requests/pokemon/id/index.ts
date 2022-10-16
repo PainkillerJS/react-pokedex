@@ -8,4 +8,4 @@ interface RequestPokemonParams {
 }
 
 export const requestPokemon = ({ config, params }: RequestPokemonParams) =>
-  api.get(`pokemon/${params.id}`, { ...config });
+  api.get<Pokemon>(`pokemon/${params.id}`, { ...config });

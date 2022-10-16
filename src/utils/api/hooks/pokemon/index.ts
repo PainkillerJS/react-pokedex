@@ -6,7 +6,7 @@ interface UseRequestPokemonQueriesParams {
 }
 
 export const useRequestPokemonQueries = ({ offset }: UseRequestPokemonQueriesParams) =>
-  useQueries<any>({
+  useQueries({
     queries: Array.from({ length: offset }).map((_, index) => {
       const pokemonId = index + 1;
 

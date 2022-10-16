@@ -17,8 +17,6 @@
     "jsx": "react-jsx",
     "baseUrl": "./src",
     "paths": {
-      "@common": ["./common"],
-      "@common/*": ["./common/*"],
       "@pages": ["./pages"],
       "@pages/*": ["./pages/*"],
       "@features/*": ["./features/*"],
@@ -30,7 +28,10 @@
       "@utils/helpers": ["./utils/helpers"],
       "@utils/helpers/*": ["./utils/helpers/*"],
       "@utils/contexts": ["./utils/contexts"],
-      "@utils/hooks": ["./utils/hooks"]
+      "@utils/hooks": ["./utils/hooks"],
+      "@utils/hooks/*": ["./utils/hooks"],
+      "@containers": ["./components/containers"],
+      "@containers/*": ["./components/containers/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],
