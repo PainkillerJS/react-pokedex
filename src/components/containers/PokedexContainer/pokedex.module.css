@@ -7,5 +7,13 @@
 }
 
 .list_container {
-  @apply flex;
+}
+
+.pokemon_item {
+  @apply mb-4 flex cursor-pointer items-center justify-center overflow-hidden rounded-l-full transition-transform hover:bg-black;
+  @apply bg-zinc-500 px-3 py-4 font-bold capitalize text-white opacity-80 hover:scale-125;
+}
+
+.pokemon_item_image {
+  @apply mr-4 h-16 w-16 scale-150 rounded-full opacity-100;
 }
