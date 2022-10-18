@@ -48,6 +48,8 @@ module.exports = {
       1,
       {
         groups: [
+          // react
+          ['react'],
           // External packages.
           ['^'],
           // Internal packages.
