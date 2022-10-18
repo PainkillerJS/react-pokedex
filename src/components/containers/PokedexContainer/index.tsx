@@ -1,11 +1,10 @@
+import classNames from 'classnames';
+import type { KeyboardEvent } from 'react';
 import { useState } from 'react';
 
 import { useRequestPokemonQueries } from '@utils/api/hooks';
 
 import styles from './pokedex.module.css';
-
-import type { KeyboardEvent } from 'react';
-import classNames from 'classnames';
 
 const PokedexContainer = () => {
   const [offset, setOffset] = useState(5);

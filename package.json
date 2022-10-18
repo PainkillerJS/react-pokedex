@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "format": "prettier --write \"**/*.{ts,tsx,css}\"",
     "lint": "eslint src/**/*.{tsx,ts}",
-    "lint:fix": "eslint --fix --ext .js,.jsx,.tsx,.ts ."
+    "lint:fix": "eslint --fix --ext .js,.jsx,.tsx,.ts .",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.0.10",
@@ -41,6 +42,7 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
+    "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "postcss": "^8.4.14",
     "prettier-plugin-tailwindcss": "^0.1.13",
