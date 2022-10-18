@@ -1,19 +1,61 @@
-.pokedex_container {
+.pokedex {
   @apply flex h-screen items-center justify-center;
 }
 
-.content_container {
+.content {
   @apply flex justify-between;
 }
 
-.list_container {
+.pokemon_item {
+  @apply mb-4 flex cursor-pointer items-center justify-center overflow-hidden rounded-l-full transition-transform;
+  @apply bg-zinc-500 px-3 py-4 font-bold capitalize text-white opacity-80 shadow-xl;
+  @apply hover:scale-125 hover:bg-black;
 }
 
-.pokemon_item {
-  @apply mb-4 flex cursor-pointer items-center justify-center overflow-hidden rounded-l-full transition-transform hover:bg-black;
-  @apply bg-zinc-500 px-3 py-4 font-bold capitalize text-white opacity-80 hover:scale-125;
+.pokemon_item_active {
+  @apply bg-red-500 hover:bg-red-500;
 }
 
 .pokemon_item_image {
-  @apply mr-4 h-16 w-16 scale-150 rounded-full opacity-100;
+  @apply mr-4 h-16 w-16 scale-150 rounded-full rounded opacity-100;
+}
+
+.card {
+  @apply mr-6 flex flex-col p-10 shadow-xl;
+}
+
+.card_title {
+  @apply flex items-center justify-center justify-between capitalize;
+}
+
+.card_title_name {
+  @apply text-2xl font-bold;
+}
+
+.card_title_id {
+  @apply text-lg font-semibold;
+}
+
+.card_info {
+  @apply flex justify-between p-6;
+}
+
+.card_info_title {
+  @apply text-2xl font-bold text-black;
+}
+
+.card_info_item {
+  @apply mt-1 border-b-2 pb-1;
+}
+
+.card_types {
+  @apply mt-1 flex gap-2;
+}
+
+.card_type {
+  @apply rounded-full bg-gray-500 py-1 px-3 text-white;
+}
+
+.card img {
+  @apply h-80 w-80;
 }
