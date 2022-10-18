@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-
 import { requestStat } from '@utils/api/requests';
 
 interface UseRequestPokemonQueryParams {
