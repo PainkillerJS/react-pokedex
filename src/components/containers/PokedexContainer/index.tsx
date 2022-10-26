@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import classNames from 'classnames';
 
-import { useRequestPokemonQueries } from '@utils/api/hooks';
+import { useRequestEvolutionChainQuery, useRequestPokemonQueries } from '@utils/api/hooks';
 
 import styles from './pokedex.module.css';
 
@@ -14,6 +14,11 @@ const PokedexContainer = () => {
   const results = useRequestPokemonQueries({ offset });
 
   const isFetching = results.some((result) => result.isFetching);
+
+  const { data } = useRequestEvolutionChainQuery({
+    id: activePokemonId,
+    options: { enabled: !isFetching }
+  });
 
   if (isFetching) return <>Error</>;
 
