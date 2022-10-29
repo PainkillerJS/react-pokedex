@@ -1,0 +1,11 @@
+.header {
+  @apply mb-5 flex h-full items-center justify-around px-8 py-4 shadow-md;
+}
+
+.header_logo {
+  @apply w-[12%];
+}
+
+.header_link {
+  @apply mr-4;
+}

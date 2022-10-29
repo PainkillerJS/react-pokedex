@@ -1,19 +1,29 @@
 import { useQueries } from '@tanstack/react-query';
 
-import { requestPokemon } from '@utils/api/requests/pokemon/id';
+import { requestPokemon } from '@utils/api/requests';
 
 interface UseRequestPokemonQueriesParams {
   offset: number;
+  limit?: number;
 }
 
-export const useRequestPokemonQueries = ({ offset }: UseRequestPokemonQueriesParams) =>
-  useQueries({
-    queries: Array.from({ length: offset }).map((_, index) => {
-      const pokemonId = index + 1;
+const generateQueries = ({ offset, limit = 0 }: UseRequestPokemonQueriesParams) => {
+  const queryArr = [];
 
-      return {
-        queryKey: ['pokemon', pokemonId],
-        queryFn: () => requestPokemon({ params: { id: pokemonId } })
-      };
-    })
+  for (let i = offset; i < offset + limit; i++) {
+    const pokemonId = i + 1;
+
+    queryArr.push({
+      queryKey: ['pokemon', pokemonId],
+      queryFn: () => requestPokemon({ params: { id: pokemonId } })
+    });
+  }
+  return queryArr;
+};
+
+export const useRequestPokemonQueries = ({
+  params
+}: RequestQueryParams<UseRequestPokemonQueriesParams>) =>
+  useQueries({
+    queries: generateQueries(params)
   });

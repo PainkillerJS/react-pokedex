@@ -23,7 +23,9 @@ export default defineConfig({
       '@assets': path.resolve(__dirname, './src/assets'),
       '@assets/*': path.resolve(__dirname, './src/assets/*'),
       '@containers': path.resolve(__dirname, './src/components/containers'),
-      '@containers/*': path.resolve(__dirname, './src/components/containers/*')
+      '@containers/*': path.resolve(__dirname, './src/components/containers/*'),
+      '@common': path.resolve(__dirname, './src/common'),
+      '@common/*': path.resolve(__dirname, './src/common/*')
     }
   }
 });

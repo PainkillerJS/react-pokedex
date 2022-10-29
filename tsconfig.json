@@ -31,7 +31,9 @@
       "@utils/hooks": ["./utils/hooks"],
       "@utils/hooks/*": ["./utils/hooks"],
       "@containers": ["./components/containers"],
-      "@containers/*": ["./components/containers/*"]
+      "@containers/*": ["./components/containers/*"],
+      "@common": ["./common"],
+      "@common/*": ["./common/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],

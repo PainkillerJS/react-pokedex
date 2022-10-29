@@ -3,22 +3,22 @@ import { useState } from 'react';
 
 import classNames from 'classnames';
 
-import { useRequestEvolutionChainQuery, useRequestPokemonQueries } from '@utils/api/hooks';
+import { useRequestPokemonQueries } from '@utils/api/hooks';
 
 import styles from './pokedex.module.css';
 
 const PokedexContainer = () => {
-  const [offset, setOffset] = useState(5);
+  const [offset] = useState(5);
   const [activePokemonId, setActivePokemonId] = useState<Pokemon['id']>(1);
 
-  const results = useRequestPokemonQueries({ offset });
+  const results = useRequestPokemonQueries({ params: { offset } });
 
   const isFetching = results.some((result) => result.isFetching);
 
-  const { data } = useRequestEvolutionChainQuery({
-    id: activePokemonId,
-    options: { enabled: !isFetching }
-  });
+  // const { data } = useRequestEvolutionChainQuery({
+  //   id: activePokemonId,
+  //   options: { enabled: !isFetching }
+  // });
 
   if (isFetching) return <>Error</>;
 

@@ -1,27 +1,22 @@
 import type { FC } from 'react';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 import { useRequestPokemonQueries } from '@utils/api/hooks';
-import { useIntersectionObserver } from '@utils/hooks';
 
 import { PokemonSingle } from './components';
 
 const PokemonsContainer: FC = () => {
-  const lastElemRef = useRef<HTMLDivElement>(null);
-  const [offset, setOffset] = useState(20);
-  const results = useRequestPokemonQueries({ offset });
+  const [offset, setOffset] = useState(0);
 
-  const isFetching = results.some((result) => result.isFetching);
+  const results = useRequestPokemonQueries({
+    params: { offset, limit: 20 }
+  });
+
+  const isLoading = results.some((result) => result.isLoading);
 
   const observerLoadData = () => setOffset(offset + 20);
 
-  useIntersectionObserver({
-    isLoadingRequest: isFetching,
-    lastElementRef: lastElemRef,
-    callBack: observerLoadData
-  });
-
-  if (isFetching) return <>Error</>;
+  if (isLoading) return <>Error</>;
 
   const pokemons = results.map(({ data }) => data!.data);
 
@@ -32,7 +27,7 @@ const PokemonsContainer: FC = () => {
           <PokemonSingle key={index} pokemon={pokemon} />
         ))}
       </div>
-      <div ref={lastElemRef} className='opacity-0' />
+      <button onClick={observerLoadData}>+</button>
     </div>
   );
 };

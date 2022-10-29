@@ -1,5 +1,5 @@
 .pokedex {
-  @apply flex h-screen items-center justify-center;
+  @apply flex items-center justify-center;
 }
 
 .content {
