@@ -1,33 +1,31 @@
 import type { FC } from 'react';
-import { useState } from 'react';
 
-import { useRequestPokemonQueries } from '@utils/api/hooks';
+import { useRequestPokemonInfiniteQuery } from '@utils/api/hooks';
+import { getPokemonId } from '@utils/helpers';
 
-import { PokemonSingle } from './components';
+import styles from './pokemon.module.css';
 
 const PokemonsContainer: FC = () => {
-  const [offset, setOffset] = useState(0);
+  const { data, fetchNextPage, isLoading } = useRequestPokemonInfiniteQuery();
 
-  const results = useRequestPokemonQueries({
-    params: { offset, limit: 20 }
-  });
+  if (isLoading || !data) return <>Error</>;
 
-  const isLoading = results.some((result) => result.isLoading);
-
-  const observerLoadData = () => setOffset(offset + 20);
-
-  if (isLoading) return <>Error</>;
-
-  const pokemons = results.map(({ data }) => data!.data);
+  const pokemons = data.pages.reduce(
+    (pokemons: NamedAPIResource[], { data }) => pokemons.concat(data.results),
+    []
+  );
 
   return (
-    <div className='container py-8 px-12'>
-      <div className='grid grid-cols-4 gap-10'>
+    <div className='container py-8'>
+      <div className={styles.pokemons_container}>
         {pokemons.map((pokemon, index) => (
-          <PokemonSingle key={index} pokemon={pokemon} />
+          <div key={pokemon.name} className={styles.pokemon}>
+            <div className={styles.pokemon_number}>{getPokemonId(index + 1)}</div>
+            <p className={styles.pokemon_name}>{pokemon.name}</p>
+          </div>
         ))}
       </div>
-      <button onClick={observerLoadData}>+</button>
+      <button onClick={() => fetchNextPage()}>+</button>
     </div>
   );
 };

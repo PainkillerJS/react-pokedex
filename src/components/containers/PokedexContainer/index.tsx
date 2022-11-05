@@ -4,6 +4,7 @@ import { useState } from 'react';
 import classNames from 'classnames';
 
 import { useRequestPokemonQueries } from '@utils/api/hooks';
+import { getPokemonId } from '@utils/helpers';
 
 import styles from './pokedex.module.css';
 
@@ -35,7 +36,7 @@ const PokedexContainer = () => {
       <div className={styles.card}>
         <div className={styles.card_title}>
           <h3 className={styles.card_title_name}>{activePokemon.name}</h3>
-          <h3>#00{activePokemon.id}</h3>
+          <h3>{getPokemonId(activePokemon.id)}</h3>
         </div>
 
         <div className={styles.card_types}>

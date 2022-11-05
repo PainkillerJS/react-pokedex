@@ -3,7 +3,7 @@ import type { AxiosRequestConfig } from 'axios';
 import { api } from '@utils/api/instance';
 
 export interface RequestPokemonsParams {
-  params: { limit: number; offset: number };
+  params: { limit?: number; offset?: number };
   config?: AxiosRequestConfig;
 }
 
