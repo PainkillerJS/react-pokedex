@@ -1,5 +1,5 @@
 interface RequestQueryParams<T = {}> {
-  params?: T;
+  params: T;
   config?: Omit<
     import('@tanstack/react-query/src/types').UseQueryOptions<
       TQueryFnData,

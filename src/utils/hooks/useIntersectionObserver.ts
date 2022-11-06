@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 
 interface UseIntersectionObserverParams {
   isLoadingRequest: boolean;
-  callBack: (...params: any[]) => unknown;
+  callBack: () => unknown;
   lastElementRef: RefObject<HTMLDivElement>;
 }
 
@@ -25,7 +25,7 @@ const useIntersectionObserver = ({
 
     const observeWork: IntersectionObserverCallback = (entries) => {
       if (entries?.[0].isIntersecting) {
-        callBack?.();
+        callBack();
       }
     };
 

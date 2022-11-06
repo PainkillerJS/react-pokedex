@@ -3,7 +3,7 @@
 }
 
 .pokemon {
-  @apply flex flex-col justify-between gap-1 rounded-lg px-7 py-5 shadow-lg;
+  @apply flex items-center justify-between gap-1 rounded-lg p-5 shadow-lg;
 }
 
 .pokemon_number {
@@ -11,5 +11,13 @@
 }
 
 .pokemon_name {
-  @apply text-2xl font-bold capitalize text-black;
+  @apply w-full overflow-hidden text-ellipsis whitespace-nowrap text-2xl font-bold capitalize text-black;
+}
+
+.pokemon_container {
+  @apply relative flex flex-col;
+}
+
+.pokemon_info {
+  @apply absolute;
 }

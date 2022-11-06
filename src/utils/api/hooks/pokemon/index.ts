@@ -1,4 +1,4 @@
-import { useInfiniteQuery,useQueries } from '@tanstack/react-query';
+import { useInfiniteQuery, useQueries } from '@tanstack/react-query';
 
 import { requestPokemon, requestPokemons } from '@utils/api/requests';
 
@@ -30,13 +30,12 @@ export const useRequestPokemonQueries = ({
 
 const REQUEST_POKEMONS_DATA = 20;
 
-export const useRequestPokemonInfiniteQuery = ({ config }: RequestQueryParams = {}) =>
+export const useRequestPokemonInfiniteQuery = () =>
   useInfiniteQuery(
     ['pokemon'],
     ({ pageParam = 0 }) =>
       requestPokemons({ params: { limit: REQUEST_POKEMONS_DATA, offset: pageParam } }),
     {
-      ...config,
       getNextPageParam: (_, allPokemonsData) => allPokemonsData.length * REQUEST_POKEMONS_DATA
     }
   );
