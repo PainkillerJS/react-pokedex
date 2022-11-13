@@ -43,6 +43,7 @@ module.exports = {
     'no-param-reassign': 0,
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
 
+    'import/no-extraneous-dependencies': [0, { devDependencies: true }],
     'import/order': 0,
     'simple-import-sort/exports': 1,
     'simple-import-sort/imports': [

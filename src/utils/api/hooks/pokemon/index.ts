@@ -28,14 +28,18 @@ export const useRequestPokemonQueries = ({
     queries: generateQueries(params)
   });
 
-const REQUEST_POKEMONS_DATA = 20;
-
-export const useRequestPokemonInfiniteQuery = () =>
+export const useRequestPokemonInfiniteQuery = ({
+  limit = 20
+}: Pick<UseRequestPokemonQueriesParams, 'limit'> = {}) =>
   useInfiniteQuery(
     ['pokemon'],
-    ({ pageParam = 0 }) =>
-      requestPokemons({ params: { limit: REQUEST_POKEMONS_DATA, offset: pageParam } }),
+    ({ pageParam = 0 }) => requestPokemons({ params: { limit, offset: pageParam } }),
     {
-      getNextPageParam: (_, allPokemonsData) => allPokemonsData.length * REQUEST_POKEMONS_DATA
+      getNextPageParam: (lastPokemonData, allPokemonsData) => {
+        const pokemonsCount = allPokemonsData.length * limit;
+        const hasNextPage = pokemonsCount < lastPokemonData.data.count;
+
+        return hasNextPage ? pokemonsCount : undefined;
+      }
     }
   );

@@ -7,7 +7,7 @@
 }
 
 .pokemon_number {
-  @apply text-base font-light;
+  @apply relative text-base font-light;
 }
 
 .pokemon_name {
@@ -19,5 +19,33 @@
 }
 
 .pokemon_info {
-  @apply absolute;
+  @apply absolute top-16 z-10 w-full;
+}
+
+.pokemon_card {
+  @apply cursor-pointer rounded-lg bg-white p-5 shadow-xl;
+}
+
+.pokemon_card img {
+  @apply mx-auto h-56;
+}
+
+.pokemon_types {
+  @apply my-2 flex gap-2;
+}
+
+.pokemon_type {
+  @apply rounded-full bg-gray-500 py-1 px-3 text-white;
+}
+
+.pokemon_card_info {
+  @apply flex flex-col justify-between gap-1;
+}
+
+.pokemon_card_info_title {
+  @apply text-2xl font-bold text-black;
+}
+
+.pokemon_card_info_item {
+  @apply mt-1 border-b-2 pb-1;
 }
